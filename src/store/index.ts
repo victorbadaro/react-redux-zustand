@@ -2,7 +2,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 const todosSlice = createSlice({
-	name: 'todo',
+	name: 'todos',
 	initialState: ['Fazer café', 'Estudar Redux', 'Estudar Zustand'],
 	reducers: {
 		add: (state, action) => {
