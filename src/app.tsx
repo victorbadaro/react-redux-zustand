@@ -1,3 +1,11 @@
+import { AddTodo } from './components/add-todo';
+import { TodosList } from './components/todos-list';
+
 export function App() {
-	return <h1>Hello, Redux and Zustand!</h1>;
+	return (
+		<div>
+			<TodosList />
+			<AddTodo />
+		</div>
+	);
 }
