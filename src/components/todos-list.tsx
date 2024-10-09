@@ -1,8 +1,13 @@
+import { useAppSelector } from '@/store';
+
 export function TodosList() {
+	const todos = useAppSelector(store => store.todos);
+
 	return (
 		<ul>
-			<li>Fazer café</li>
-			<li>Estudar Redux</li>
+			{todos.map((todo, index) => (
+				<li key={index}>{todo}</li>
+			))}
 		</ul>
 	);
 }
