@@ -1,23 +1,18 @@
 import { Header } from '@/components/header';
 import { Module } from '@/components/module';
 import { VideoPlayer } from '@/components/video-player';
-import { api } from '@/lib/axios';
-import { useAppSelector, useCurrentLesson } from '@/store';
-import { start } from '@/store/slices/player';
+import { useAppDispatch, useAppSelector, useCurrentLesson } from '@/store';
+import { loadCourse } from '@/store/slices/player';
 import { MessageCircle } from 'lucide-react';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
 export function Player() {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const modules = useAppSelector(state => state.player.course?.modules);
 	const { currentLesson } = useCurrentLesson();
 
 	useEffect(() => {
-		api.get('/courses/1')
-			.then(response => {
-				dispatch(start(response.data));
-			});
+		dispatch(loadCourse());
 	}, [dispatch]);
 
 	useEffect(() => {
