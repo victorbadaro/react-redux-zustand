@@ -1,19 +1,18 @@
 import { Header } from '@/components/header';
 import { Module } from '@/components/module';
 import { VideoPlayer } from '@/components/video-player';
-import { useAppDispatch, useAppSelector, useCurrentLesson } from '@/store';
-import { loadCourse } from '@/store/slices/player';
+import { useCurrentLesson, useStore } from '@/zustand-store';
 import { MessageCircle } from 'lucide-react';
 import { useEffect } from 'react';
 
 export function Player() {
-	const dispatch = useAppDispatch();
-	const modules = useAppSelector(state => state.player.course?.modules);
+	const course = useStore(state => state.course);
+	const load = useStore(state => state.load);
 	const { currentLesson } = useCurrentLesson();
 
 	useEffect(() => {
-		dispatch(loadCourse());
-	}, [dispatch]);
+		load();
+	}, [load]);
 
 	useEffect(() => {
 		if (currentLesson) {
@@ -38,7 +37,7 @@ export function Player() {
 						<VideoPlayer />
 					</div>
 					<aside className="w-80 absolute top-0 right-0 bottom-0 border-l divide-y-2 divide-zinc-900 border-zinc-800 bg-zinc-900 overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800">
-						{modules && modules.map((module, index) => (
+						{course?.modules && course?.modules.map((module, index) => (
 							<Module
 								key={module.id}
 								moduleIndex={index}
