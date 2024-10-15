@@ -1,4 +1,4 @@
-import { useCurrentLesson, useStore } from '@/zustand-store';
+import { useCurrentLesson, useStore } from '@/store';
 import { Loader } from 'lucide-react';
 import ReactPlayer from 'react-player';
 

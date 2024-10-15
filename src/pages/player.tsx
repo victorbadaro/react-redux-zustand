@@ -1,7 +1,7 @@
 import { Header } from '@/components/header';
 import { Module } from '@/components/module';
 import { VideoPlayer } from '@/components/video-player';
-import { useCurrentLesson, useStore } from '@/zustand-store';
+import { useCurrentLesson, useStore } from '@/store';
 import { MessageCircle } from 'lucide-react';
 import { useEffect } from 'react';
 

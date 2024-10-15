@@ -1,4 +1,4 @@
-import { useStore } from '@/zustand-store';
+import { useStore } from '@/store';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import { ChevronDown } from 'lucide-react';
 import { Lesson } from './lesson';
