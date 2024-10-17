@@ -10,10 +10,10 @@ interface Module {
 }
 
 export function Module({ moduleIndex, title, amountOfLessons }: Module) {
-	const currentModuleIndex = useStore(state => state.currentModuleIndex);
-	const currentLessonIndex = useStore(state => state.currentLessonIndex);
-	const play = useStore(state => state.play);
-	const lessons = useStore(state => state.course?.modules[moduleIndex].lessons);
+	const currentModuleIndex = useStore((state) => state.currentModuleIndex);
+	const currentLessonIndex = useStore((state) => state.currentLessonIndex);
+	const play = useStore((state) => state.play);
+	const lessons = useStore((state) => state.course?.modules[moduleIndex].lessons);
 
 	return (
 		<Collapsible.Root className="group" defaultOpen={moduleIndex === 0}>
@@ -28,17 +28,11 @@ export function Module({ moduleIndex, title, amountOfLessons }: Module) {
 
 			<Collapsible.Content>
 				<nav className="relative flex flex-col gap-4 p-6">
-					{lessons && lessons.map((lesson, lessonIndex) => {
+					{lessons?.map((lesson, lessonIndex) => {
 						const isCurrent = currentModuleIndex === moduleIndex && currentLessonIndex === lessonIndex;
 
 						return (
-							<Lesson
-								key={lesson.id}
-								title={lesson.title}
-								duration={lesson.duration}
-								onPlay={() => play([moduleIndex, lessonIndex])}
-								isCurrent={isCurrent}
-							/>
+							<Lesson key={lesson.id} title={lesson.title} duration={lesson.duration} onPlay={() => play([moduleIndex, lessonIndex])} isCurrent={isCurrent} />
 						);
 					})}
 				</nav>

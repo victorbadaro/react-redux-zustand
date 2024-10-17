@@ -2,7 +2,7 @@ import { useCurrentLesson, useStore } from '@/store';
 
 export function Header() {
 	const { currentModule, currentLesson } = useCurrentLesson();
-	const isLoading = useStore(state => state.isLoading);
+	const isLoading = useStore((state) => state.isLoading);
 
 	if (isLoading) {
 		<h1 className="text-2xl font-bold">Carregando...</h1>;

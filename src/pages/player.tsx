@@ -6,8 +6,8 @@ import { MessageCircle } from 'lucide-react';
 import { useEffect } from 'react';
 
 export function Player() {
-	const course = useStore(state => state.course);
-	const load = useStore(state => state.load);
+	const course = useStore((state) => state.course);
+	const load = useStore((state) => state.load);
 	const { currentLesson } = useCurrentLesson();
 
 	useEffect(() => {
@@ -37,13 +37,8 @@ export function Player() {
 						<VideoPlayer />
 					</div>
 					<aside className="w-80 absolute top-0 right-0 bottom-0 border-l divide-y-2 divide-zinc-900 border-zinc-800 bg-zinc-900 overflow-y-scroll scrollbar-thin scrollbar-track-zinc-950 scrollbar-thumb-zinc-800">
-						{course?.modules && course?.modules.map((module, index) => (
-							<Module
-								key={module.id}
-								moduleIndex={index}
-								title={module.title}
-								amountOfLessons={module.lessons.length}
-							/>
+						{course?.modules.map((module, index) => (
+							<Module key={module.id} moduleIndex={index} title={module.title} amountOfLessons={module.lessons.length} />
 						))}
 					</aside>
 				</main>
